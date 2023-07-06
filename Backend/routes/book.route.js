@@ -47,12 +47,13 @@ BookRoute.get('/', async (req, res) => {
     }
   });
   
-  // Delete Book API
+  // Below is the API Route to  Delete Book 
+  
   BookRoute.delete('/del/:id', async (req, res) => {
     try {
       const book = await BookModel.findByIdAndDelete(req.params.id);
       if (!book) {
-        return res.status(404).send('Book not found');
+        return res.status(404).send('Book not Present');
       }
       res.send('Book deleted successfully');
     } catch (error) {
@@ -61,7 +62,7 @@ BookRoute.get('/', async (req, res) => {
     }
   });
   
-  // Filter Books API
+  // Below is the API Route to  Filter Books 
   BookRoute.get('/filter', async (req, res) => {
     try {
       const books = await BookModel.find({ genre: req.query.genre });
@@ -72,7 +73,7 @@ BookRoute.get('/', async (req, res) => {
     }
   });
   
-  // Sort Books API
+  ////Below is the API Route to  Sort Books 
   BookRoute.get('/sort', async (req, res) => {
     try {
       const sort = {};
